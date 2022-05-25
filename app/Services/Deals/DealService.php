@@ -2,12 +2,13 @@
 
 
 namespace App\Services\Deals;
-use App\Models\Deal\Deal;
+use App\Services\Core\BaseService;
+use App\Models\Deal;
 class DealService extends BaseService
 {
-    public function __construct(Role $role)
+    public function __construct(Deal $deal)
     {
-        $this->model = $role;
+        $this->model = $deal;
     }
 
     public function add($request)
