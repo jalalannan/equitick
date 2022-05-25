@@ -6,7 +6,8 @@ namespace App\Services\Core\Auth;
 use App\Exceptions\GeneralException;
 use App\Models\User;
 use App\Services\Core\BaseService;
-
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
 class UserService extends BaseService
 {
 
@@ -17,6 +18,9 @@ class UserService extends BaseService
 
     public function create()
     {
+        request()->merge([
+            'password' => bcrypt(request()->password),
+        ]);
         parent::save($this->getFillAble(array_merge(request()->only(
             'name',
             'email',
@@ -63,7 +67,9 @@ class UserService extends BaseService
     public function login()
     {
         /**@var $user User*/
-        $user = $this->model::findByEmail( request()->get('email') );
-        
+        $attempt = auth()->attempt(request()->only(['email', 'password']));
+        if(!$attempt)
+        throw new ModelNotFoundException('Wrong Email or Password ');
+
     }
 }
