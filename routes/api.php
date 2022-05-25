@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Core\Auth\UserController;
 use App\Http\Controllers\Core\Auth\TestController;
-use App\Http\Controllers\API\DealController;
+use App\Http\Controllers\DealController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,5 +20,5 @@ Route::post('register', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
      
 Route::middleware('auth:api')->group( function () {
-    Route::resource('deals', DealController::class);
+    Route::get('deals', [DealController::class, 'getDeals']);
 });
