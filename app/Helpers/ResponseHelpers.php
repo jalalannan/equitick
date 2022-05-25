@@ -9,6 +9,13 @@ if (!function_exists('created_responses')) {
     }
 }
 
+if (!function_exists('login_responses')) {
+    function login_responses($name, $data = [])
+    {
+        return resolve(ResponseHelper::class)->loginResponse($name, $data);
+    }
+}
+
 
 if (!function_exists('updated_responses')) {
     function updated_responses($name, $data = [])
