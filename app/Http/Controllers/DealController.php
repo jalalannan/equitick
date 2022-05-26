@@ -18,7 +18,9 @@ class DealController extends Controller
 
     public function getDeals(GetDealRequest $request, Builder $builder)
     {
-        $s = \App\Models\Deal::FilterBy(request()->all());dd($s->get());
+        $deals = $this->service->FilterBy(request()->all());
+
+        return return_responses('deals', ['status' => 200, 'data' => $deals->get()]);
     }
     /**
      * Display a listing of the resource.
