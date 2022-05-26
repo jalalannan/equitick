@@ -25,6 +25,14 @@ if (!function_exists('updated_responses')) {
 }
 
 
+if (!function_exists('return_responses')) {
+    function return_responses($name, $data = [])
+    {
+        return resolve(ResponseHelper::class)->returnResponse($name, $data);
+    }
+}
+
+
 if (!function_exists('deleted_responses')) {
     function deleted_responses($name, $data = [])
     {

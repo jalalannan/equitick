@@ -25,6 +25,16 @@ class ResponseHelper
         ], $data);
     }
 
+    public function returnResponse($name, $data = [])
+    {
+        return array_merge([
+            'status' => true,
+            'message' => trans('messages.return_response', [
+                'model' => __($name)
+            ]),
+        ], $data);
+    }
+
     public function updatedResponse($name, $data = [])
     {
         return array_merge([
