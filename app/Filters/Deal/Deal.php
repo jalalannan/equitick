@@ -9,6 +9,6 @@ class Deal extends QueryFilter implements FilterContract
 {
     public function handle($value): void
     {
-        $this->query->where('deal', $value);
+        $this->query->orwhere('deal', $value);
     }
 }

@@ -9,6 +9,6 @@ class Login extends QueryFilter implements FilterContract
 {
     public function handle($value): void
     {
-        $this->query->where('Login', $value);
+        $this->query->orwhere('Login', $value);
     }
 }
