@@ -5,6 +5,7 @@ use App\Models\Deal as DealFilter;
 use App\Services\Deals\DealService;
 use App\Filters\DealFilter\Deal;
 use App\Http\Requests\Deal\GetDealRequest;
+use App\Http\Requests\Deal\DealRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
@@ -48,9 +49,12 @@ class DealController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DealRequest $request)
     {
-        //
+        $status = $this->service
+            ->setAttrs($request->only('Deal', 'Login', 'Action', 'Entry', 'Time', 'Symbol', 'Price', 'Profit', 'Volume'))
+            ->save();
+        return created_responses('deals', ['deal' => $status]);
     }
 
     /**
