@@ -21,4 +21,5 @@ Route::post('login', [UserController::class, 'login']);
      
 Route::middleware('auth:api')->group( function () {
     Route::get('deals', [DealController::class, 'getDeals']);
+    Route::post('deals', [DealController::class, 'store']);
 });
