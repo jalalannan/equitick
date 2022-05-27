@@ -8,6 +8,7 @@ use DB;
 class Deal extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $fillable = ['Deal', 'Login', 'Action', 'Entry', 'Time', 'Symbol', 'Price', 'Profit', 'Volume'];
     protected $namespace = 'App\Filters';
 
