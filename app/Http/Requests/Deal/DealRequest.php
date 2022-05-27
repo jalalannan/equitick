@@ -13,7 +13,7 @@ class DealRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->user()->exists();
     }
 
     /**
@@ -30,8 +30,8 @@ class DealRequest extends FormRequest
             'Entry' => 'required|numeric',
             'Time' => 'required|date_format:Y-m-d H:i:s',
             'Symbol' => 'required|max:32',
-            'Price' => 'required|double',
-            'Profit' => 'required|double',
+            'Price' => 'required',
+            'Profit' => 'required',
             'Volume' => 'required|numeric',
         ];
     }
